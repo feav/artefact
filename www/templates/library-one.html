@@ -1,0 +1,36 @@
+<ion-view style="" class=" " id="library/{{lib.id}}" title="{{lib.name}}">
+    <ion-content class="has-header" padding="false" style="background: black;">
+        <!-- width: 100% height 50% to fill the slidder image according to the layout -->
+    <ion-list href="#book{{lib.id}}">
+
+        <ion-item class="item-thumbnail-left" style="padding-left: 10px;">
+            <div class="lib-item">
+                <a href="#book{{lib.id}}"><img src="img/bd/{{lib.face}}"></a>
+                <div class="informations">
+                    <h3 class="title">{{lib.name}}</h3>
+                    <i>{{lib.type}}</i>
+                    <p>By {{lib.author}}</p>
+                    <div class="bout">
+                        <span class="round">-{{lib.age}}</span>
+                        <span class="boutn">Read</span>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+
+    </ion-list>
+    <div class="text-art">{{lib.description}}</div>
+
+    <div class="desc-white">
+        <div class="barmenu" >
+            <div class="barmenu-item-2"><b>Story : </b>{{lib.story}}</div>
+            <div class="barmenu-item-2"><b>Illustration : </b> {{lib.illustration}}<br><b>Color : </b>{{lib.color}}</div>
+        </div>
+    </div>
+    
+    <div class="line"></div>
+    <div class="barmenu">
+        <div class="barmenu-item-2"><input type="submit" class="bouton" value="Acces the series"/></div>
+    </div>
+    </ion-content>
+</ion-view>

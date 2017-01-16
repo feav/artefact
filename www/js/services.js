@@ -2,13 +2,13 @@ angular.module('app.services', [])
 
 
 .factory('fireBaseData', function($firebase) {
-	var ref = new Firebase("https://projectId.firebaseio.com/"),
-    refCart = new Firebase("https://projectId.firebaseio.com/cart"),
-    refUser = new Firebase("https://projectId.firebaseio.com/users"),
-    refCategory = new Firebase("https://projectId.firebaseio.com/category"),
-    refOrder = new Firebase("https://projectId.firebaseio.com/orders"),
-    refFeatured = new Firebase("https://projectId.firebaseio.com/featured"),
-    refMenu = new Firebase("https://projectId.firebaseio.com/menu");
+	var ref = new Firebase("https://ecomerce-7d0e2.firebaseio.com/"),
+    refCart = new Firebase("https://ecomerce-7d0e2.firebaseio.com/cart"),
+    refUser = new Firebase("https://ecomerce-7d0e2.firebaseio.com/users"),
+    refCategory = new Firebase("https://ecomerce-7d0e2.firebaseio.com/category"),
+    refOrder = new Firebase("https://ecomerce-7d0e2.firebaseio.com/orders"),
+    refFeatured = new Firebase("https://ecomerce-7d0e2.firebaseio.com/featured"),
+    refMenu = new Firebase("https://ecomerce-7d0e2.firebaseio.com/menu");
   return {
     ref: function() {
       return ref;
@@ -163,7 +163,78 @@ angular.module('app.services', [])
   }])
 
 
+.factory('Library', function() {
+  // Might use a resource here that returns a JSON array
 
+  // Some fake testing data
+  var library = [{
+    id: 0,
+    name: 'Agissons tous No 3',
+    type: "Action",
+    author: 'Joelle Mandengue',
+    description:"On a tué le seul parent qui restait à KN, sa mère. Il quitte Baffoussam siège de leur gang. et arrive à Douala ou ses amis lui donne une information érronée. il se rend au quartier Bilongue, et crée un carnage!",
+    face: 'ag_pal.png',
+    age: '18',
+    book:"4",
+    story: 'Likoné Fokou',
+    illustration: 'Likoné Fokou',
+    color:'Likoné Fokou',
+    buy: false
+  }, {
+    id: 1,
+    name: 'Les nombrils No 1',
+    type: "Humour",
+    author: 'Mandresak',
+    face: 'nombril.png',
+    description:"On a tué le seul parent qui restait à KN, sa mère. Il quitte Baffoussam siège de leur gang. et arrive à Douala ou ses amis lui donne une information érronée. il se rend au quartier Bilongue, et crée un carnage!",
+    age: '10',
+    story: 'Likoné Fokou',
+    illustration: 'Likoné Fokou',
+    color:'Likoné Fokou',
+    buy: false
+  }, {
+    id: 2,
+    name: 'Les voyageurs du graal',
+    type: "Aventure",
+    author: 'Bibi Benzo',
+    description:"On a tué le seul parent qui restait à KN, sa mère. Il quitte Baffoussam siège de leur gang. et arrive à Douala ou ses amis lui donne une information érronée. il se rend au quartier Bilongue, et crée un carnage!",
+    face: 'aventuregrl.png',
+    age: '12',
+    story: 'Likoné Fokou',
+    illustration: 'Likoné Fokou',
+    color:'Likoné Fokou',
+    buy: false
+  }, {
+    id: 3,
+    name: 'Combats de rue',
+    type: "Action",
+    description:"On a tué le seul parent qui restait à KN, sa mère. Il quitte Baffoussam siège de leur gang. et arrive à Douala ou ses amis lui donne une information érronée. il se rend au quartier Bilongue, et crée un carnage!",
+    author: 'Likone FOKOU',
+    face: 'combatrue.png',
+    age: '18',
+    story: 'Likoné Fokou',
+    illustration: 'Likoné Fokou',
+    color:'Likoné Fokou',
+    buy: false
+  }];
+
+  return {
+    all: function() {
+      return library;
+    },
+    remove: function(chat) {
+      library.splice(library.indexOf(chat), 1);
+    },
+    getBook: function(chatId) {
+      for (var i = 0; i < library.length; i++) {
+        if (library[i].id === parseInt(chatId)) {
+          return library[i];
+        }
+      }
+      return null;
+    }
+  };
+})
 .factory('BlankFactory', [function(){
 
 }])

@@ -12,10 +12,43 @@ angular.module('app.routes', [])
 
   .state('tabsController', {
     url: '/page1',
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
+    templateUrl: 'templates/home.html',
+    controller: 'homeCtrl'
   })
-
+  .state('signup', {
+    url: '/page6',
+        templateUrl: 'templates/signup.html',
+        controller: 'signupCtrl'
+  })
+  .state('login', {
+    url: '/page5',
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+  })
+  .state('author', {
+    url: '/author',
+    templateUrl: 'templates/author.html',
+    controller: 'authorCtrl'
+  })
+  .state('library', {
+    url: '/library',
+    templateUrl: 'templates/library.html',
+    controller: 'libraryCtrl'
+  })  
+  .state('librarybook', {
+    url: '/book0',
+    templateUrl: 'templates/library-one.html',
+    controller: 'libraryBookCtrl'
+  })
+  .state('tabsController.signup', {
+    url: '/page6',
+    views: {
+      'tab3': {
+        templateUrl: 'templates/signup.html',
+        controller: 'signupCtrl'
+      }
+    }
+  })
   .state('tabsController.login', {
     url: '/page5',
     views: {
@@ -26,21 +59,20 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('tabsController.signup', {
-    url: '/page6',
+  .state('tabsController.forgotPassword', {
+    url: '/page15',
     views: {
-      'tab3': {
-        templateUrl: 'templates/signup.html',
-        controller: 'signupCtrl'
+      'tab1': {
+        templateUrl: 'templates/forgotPassword.html',
+        controller: 'forgotPasswordCtrl'
       }
     }
   })
-
-  .state('menu2', {
-      url: '/page7',
-      templateUrl: 'templates/menu2.html',
-      controller: 'menu2Ctrl'
-    })
+  // .state('menu2', {
+  //     url: '/page7',
+  //     templateUrl: 'templates/menu2.html',
+  //     controller: 'menu2Ctrl'
+  //   })
 
 
   .state('offers', {
@@ -85,17 +117,8 @@ angular.module('app.routes', [])
     controller: 'checkoutCtrl'
   })
 
-  .state('tabsController.forgotPassword', {
-    url: '/page15',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/forgotPassword.html',
-        controller: 'forgotPasswordCtrl'
-      }
-    }
-  })
 
-$urlRouterProvider.otherwise('/page1/page5')
+$urlRouterProvider.otherwise('/library')
 
 
 

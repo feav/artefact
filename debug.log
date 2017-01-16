@@ -1,0 +1,6 @@
+[0115/151417:ERROR:process_info.cc(608)] range at 0x7b5255e00000000, size 0xf9 fully unreadable
+[0115/151417:ERROR:process_info.cc(608)] range at 0x7b5257e00000000, size 0xf9 fully unreadable
+[0115/151417:ERROR:process_info.cc(608)] range at 0x0, size 0xf9 fully unreadable
+[0115/151419:ERROR:file_io_win.cc(145)] CreateFile C:\Users\embolo\AppData\Local\Google\Chrome\User Data\Crashpad\settings.dat: Le chemin d’accès spécifié est introuvable. (0x3)
+[0115/151420:ERROR:file_io_win.cc(154)] CreateFile C:\Users\embolo\AppData\Local\Google\Chrome\User Data\Crashpad\reports\d3e46b00-e5af-43f8-b292-f222d386defb.dmp: Le chemin d’accès spécifié est introuvable. (0x3)
+[0115/151420:ERROR:crash_report_exception_handler.cc(96)] PrepareNewCrashReport failed

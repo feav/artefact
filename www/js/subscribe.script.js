@@ -1,0 +1,9 @@
+$(document).ready(
+	function(){
+		$("#create-account").click(
+			function(){
+				alert(12);
+			}
+		);
+	}
+);

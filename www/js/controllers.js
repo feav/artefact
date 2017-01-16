@@ -1,5 +1,111 @@
 angular.module('app.controllers', [])
 
+.controller('authorCtrl',function ($scope) {})
+.controller('libraryBookCtrl',function ($scope, $stateParams,Library) {
+    // $scope.Library = Library.all();
+    $scope.lib = Library.getBook(3);//$stateParams.bookId
+})
+.controller('homeCtrl', function($scope,$rootScope,$ionicSideMenuDelegate,fireBaseData,$state,
+                                  $ionicHistory,$firebaseArray,sharedCartService,sharedUtils) {
+
+  // $('#side-menu21').addClass('hide');
+  //Check if user already logged in
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      $scope.user_info=user; //Saves data to user_info
+    }else {
+
+      $ionicSideMenuDelegate.toggleLeft(); //To close the side bar
+      $ionicSideMenuDelegate.canDragContent(false);  // To remove the sidemenu white space
+
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $rootScope.extras = false;
+      sharedUtils.hideLoading();
+      $state.go('tabsController.login', {}, {location: "replace"});
+    }
+  });
+
+  // On Loggin in to menu page, the sideMenu drag state is set to true
+  $ionicSideMenuDelegate.canDragContent(true);
+  $rootScope.extras=true;
+
+  // When user visits A-> B -> C -> A and clicks back, he will close the app instead of back linking
+  $scope.$on('$ionicView.enter', function(ev) {
+    if(ev.targetScope !== $scope){
+      $ionicHistory.clearHistory();
+      $ionicHistory.clearCache();
+    }
+  });
+
+
+
+  $scope.loadMenu = function() {
+    sharedUtils.showLoading();
+    $scope.menu=$firebaseArray(fireBaseData.refMenu());
+    sharedUtils.hideLoading();
+  }
+
+  $scope.showProductInfo=function (id) {
+
+  };
+  $scope.addToCart=function(item){
+    sharedCartService.add(item);
+  };
+
+})
+
+.controller('libraryCtrl', function($scope,$rootScope,$ionicSideMenuDelegate,fireBaseData,$state,
+                                  $ionicHistory,$firebaseArray,sharedCartService,sharedUtils,Library) {
+  $scope.Library = Library.all();
+  //Check if user already logged in
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      $scope.user_info=user; //Saves data to user_info
+    }else {
+
+      $ionicSideMenuDelegate.toggleLeft(); //To close the side bar
+      $ionicSideMenuDelegate.canDragContent(false);  // To remove the sidemenu white space
+
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $rootScope.extras = false;
+      sharedUtils.hideLoading();
+      $state.go('tabsController.login', {}, {location: "replace"});
+
+    }
+  });
+
+  // On Loggin in to menu page, the sideMenu drag state is set to true
+  $ionicSideMenuDelegate.canDragContent(true);
+  $rootScope.extras=true;
+
+  // When user visits A-> B -> C -> A and clicks back, he will close the app instead of back linking
+  $scope.$on('$ionicView.enter', function(ev) {
+    if(ev.targetScope !== $scope){
+      $ionicHistory.clearHistory();
+      $ionicHistory.clearCache();
+    }
+  });
+
+
+
+  $scope.loadMenu = function() {
+    sharedUtils.showLoading();
+    $scope.menu=$firebaseArray(fireBaseData.refMenu());
+    sharedUtils.hideLoading();
+  }
+
+  $scope.showProductInfo=function (id) {
+
+  };
+  $scope.addToCart=function(item){
+    sharedCartService.add(item);
+  };
+
+})
 .controller('loginCtrl', function($scope,$rootScope,$ionicHistory,sharedUtils,$state,$ionicSideMenuDelegate) {
     $rootScope.extras = false;  // For hiding the side bar and nav icon
 
@@ -11,8 +117,6 @@ angular.module('app.controllers', [])
         $ionicHistory.clearCache();
       }
     });
-
-
 
 
     //Check if user already logged in
@@ -83,8 +187,10 @@ angular.module('app.controllers', [])
 })
 
 .controller('signupCtrl', function($scope,$rootScope,sharedUtils,$ionicSideMenuDelegate,
-                                   $state,fireBaseData,$ionicHistory) {
+                                   $state,fireBaseData,$ionicHistory, $ionicSideMenuDelegate) {
     $rootScope.extras = false; // For hiding the side bar and nav icon
+
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.signupEmail = function (formName, cred) {
 
@@ -124,6 +230,23 @@ angular.module('app.controllers', [])
         sharedUtils.showAlert("Please note","Entered data is not valid");
       }
 
+    }
+
+    /*Elsha Modifications*/
+    $scope.connexion = function(){
+      $('#signup').addClass('hide');
+      $('#login-form').removeClass('hide');
+      $('#login').removeClass('un-select');
+      $('#newaccount').addClass('un-select');
+
+      //$( '#login-form').slideDown( "slow");
+    }
+
+    $scope.newAccount = function(){
+      $('#signup').removeClass('hide');
+      $('#login-form').addClass('hide');
+      $('#login').addClass('un-select');
+      $('#newaccount').removeClass('un-select');
     }
 
   })
@@ -188,6 +311,8 @@ angular.module('app.controllers', [])
 })
 
 .controller('indexCtrl', function($scope,$rootScope,sharedUtils,$ionicHistory,$state,$ionicSideMenuDelegate,sharedCartService) {
+
+
 
     //Check if user already logged in
     firebase.auth().onAuthStateChanged(function(user) {
