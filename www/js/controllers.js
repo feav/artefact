@@ -92,6 +92,82 @@ angular.module('app.controllers', [])
 
 
 
+
+  var cart = sharedCartService.cart;
+  
+  
+  
+  $scope.slide_items=[    {"p_id":"1",
+             "p_name":"New Chicken Maharaja",
+             "p_description":"Product Description",
+             "p_image_id":"slide_1",
+             "p_price":"183"},
+            
+            {"p_id":"2",
+            "p_name":"Big Spicy Chicken Wrap",
+            "p_description":"Product Description",
+            "p_image_id":"slide_2",
+            "p_price":"171"},
+            
+            {"p_id":"3",
+            "p_name":"Big Spicy Paneer Wrap",
+            "p_description":"Product Description",
+            "p_image_id":"slide_3",
+            "p_price":"167"}
+           ];
+             
+             
+  
+  
+  $scope.noMoreItemsAvailable = false; // lazy load list
+  
+  
+
+        
+    //loads the menu----onload event
+  $scope.$on('$stateChangeSuccess', function() {
+    $scope.loadMore();  //Added Infine Scroll
+  });
+   
+  // Loadmore() called inorder to load the list 
+  $scope.loadMore = function() {
+    
+      str=sharedFilterService.getUrl();
+      $http.get(str).success(function (response){
+        $scope.menu_items = response.records;
+        $scope.hasmore=response.has_more; //"has_more": 0 or number of items left
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }); 
+      
+      //more data can be loaded or not
+      if ( $scope.hasmore == 0 ) {
+        $scope.noMoreItemsAvailable = true;
+      }
+  };
+   
+  
+   //show product page
+  $scope.showProductInfo=function (id,desc,img,name,price) {   
+     sessionStorage.setItem('product_info_id', id);
+     sessionStorage.setItem('product_info_desc', desc);
+     sessionStorage.setItem('product_info_img', img);
+     sessionStorage.setItem('product_info_name', name);
+     sessionStorage.setItem('product_info_price', price);
+     window.location.href = "#/page13";
+   };
+
+   //add to cart function
+   $scope.addToCart=function(id,image,name,price){    
+    cart.add(id,image,name,price,1);  
+   };  
+
+
+
+
+
+
+
+
   $scope.loadMenu = function() {
     sharedUtils.showLoading();
     $scope.menu=$firebaseArray(fireBaseData.refMenu());
