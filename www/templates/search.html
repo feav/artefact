@@ -1,0 +1,32 @@
+<ion-view style="" class=" " id="page1" title="Home">
+    <ion-content class="has-headerj" padding="false" style="background: black center; background-size: cover;">
+    <div class="content-home ">
+    	<label class="item item-input bord-black" >
+            <input ng-model="user.phone" type="texte" ng-model="searchText" placeholder="" onfocus="search()" ng-model="searchText" style="border:none;">
+            <span class="input-img"><img src="img/search.png"></span>
+        </label>
+    </div>
+        <div class="home-search scroll">
+                <div class="line"></div>
+                    <ion-list ng-repeat="lib in Library | filter:searchText" href="#book{{lib.id}}">
+
+                        <ion-item class="item-thumbnail-left" style="padding-left: 10px;">
+                            <div class="lib-item">
+                                <a href="#book{{lib.id}}"><img src="img/bd/{{lib.face}}"></a>
+                                <div class="informations">
+                                    <h3 class="title">{{lib.name}}</h3>
+                                    <i>{{lib.type}}</i>
+                                    <p>By {{lib.author}}</p>
+                                    <div class="bout">
+                                        <span class="round">-{{lib.age}}</span>
+                                        <a href="" class="boutn">Read</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </ion-item>
+
+                    </ion-list>
+        </div>    
+    </ion-content>
+</ion-view>

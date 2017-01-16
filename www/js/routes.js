@@ -25,6 +25,11 @@ angular.module('app.routes', [])
         templateUrl: 'templates/login.html',
         controller: 'loginCtrl'
   })
+    .state('search', {
+    url: '/search',
+        templateUrl: 'templates/search.html',
+        controller: 'searchCtrl'
+  })
   .state('author', {
     url: '/author',
     templateUrl: 'templates/author.html',

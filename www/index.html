@@ -132,12 +132,10 @@
                     <ion-item  ng-if="$root.extras == false" data-componentid="list-item1" style="" menu-close="" ui-sref="signup" id="menu-list-item1" class="item-icon-left  ">
                         <i class="icon my-icon"><img src="img/sub.png" style="width: 20px;margin-left: 10px;"></i>Subscriber</ion-item>
                     
-                    <label class="item item-input bord-black" style="min-height: 42px !important;padding-right: 2px !important;">
-                          <input ng-model="user.phone" type="tel" placeholder="">
-                          <span class="input-img"><img src="img/search.png"></span>
-                      </label>
-
-
+                    <div class="item item-input bord-black" ng-controller="homeCtrl">
+                        <input ng-model="texte" type="texte" placeholder="" style="border:none;">
+                        <button class="input-img" ng-click="search();"><img src="img/search.png"></button>
+                    </div>
                     <ion-item data-componentid="list-item1" style="" menu-close="" ui-sref="home" id="menu-list-item1" class="item-icon-left  ">
                         <i class="icon ion-ios-home-outline"></i>Home</ion-item>
                         <hr>
@@ -145,39 +143,48 @@
                         <i class="icon my-icon"><img src="img/lib.png" style="width: 20px;margin-left: 10px;"></i>Serie</ion-item>
                         <hr>
                     <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
-                      <span class="custom-dropdown custom-dropdown--white">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#kind');">
                       <i class="icon my-icon" style="left: 0;"><img src="img/kind.png" style="width: 20px;"></i>
-                          <select class="custom-dropdown__select custom-dropdown__select--white">
-                              <option>Kind</option>
-                              <option>Kindom</option>
-                              <option>State</option>
-                              <option>Heiven</option>
-                          </select>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Kind
+                          </div>        
                       </span>
+                          <div class="listSub hide" id="kind">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
                     </ion-item>
                         <hr>
                     <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
-                      <span class="custom-dropdown custom-dropdown--white">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#author');">
                       <i class="icon my-icon" style="left: 0;"><img src="img/pencil.png" style="width: 20px;"></i>
-                          <select class="custom-dropdown__select custom-dropdown__select--white">
-                              <option>Author</option>
-                              <option>Kindom</option>
-                              <option>State</option>
-                              <option>Heiven</option>
-                          </select>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Author
+                          </div>        
                       </span>
+                          <div class="listSub hide" id="author">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
                     </ion-item>
                         <hr>
                     <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
-                      <span class="custom-dropdown custom-dropdown--white">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#style');">
                       <i class="icon my-icon" style="left: 0;"><img src="img/style.png" style="width: 20px;"></i>
-                          <select class="custom-dropdown__select custom-dropdown__select--white">
-                              <option>Style</option>
-                              <option>Kindom</option>
-                              <option>State</option>
-                              <option>Heiven</option>
-                          </select>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Style
+                          </div>        
                       </span>
+                          <div class="listSub hide" id="style">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
                     </ion-item>
                         <hr ng-if="$root.extras">
                     <ion-item ng-click="logout()" ng-if="$root.extras == f" data-componentid="list-item7" style="" id="menu-list-item7" class="item-icon-left  ">
@@ -200,7 +207,17 @@
                 customSelects[i].parentNode.className += " custom-dropdown--disabled";
             }
         }
-})()
+})();
+      function menuTarg(kind){
+        var element = $(kind);
+        var state = $(this).hasClass("hide");
+            $(kind+":after").toggle();
+        if(element.hasClass("hide") == false){
+            element.addClass("hide");
+        }else{
+            element.removeClass("hide");
+        }
+      }
   </script>
   </body>
 </html>
