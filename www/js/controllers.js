@@ -1,6 +1,7 @@
 angular.module('app.controllers', [])
 
     .controller('authorCtrl', function($scope) {})
+
     .controller('libraryBookCtrl', function($scope, $stateParams, Library) {
         // $scope.Library = Library.all();
         $scope.lib = Library.getBook(3); //$stateParams.bookId
@@ -28,7 +29,7 @@ angular.module('app.controllers', [])
                 });
                 $rootScope.extras = false;
                 sharedUtils.hideLoading();
-                $state.go('tabsController.login', {}, {
+                $state.go('homeParent.home', {}, {
                     location: "replace"
                 });
             }
@@ -46,8 +47,6 @@ angular.module('app.controllers', [])
             }
         });
 
-
-
         $scope.loadMenu = function() {
             sharedUtils.showLoading();
             $scope.menu = $firebaseArray(fireBaseData.refMenu());
@@ -60,6 +59,13 @@ angular.module('app.controllers', [])
         $scope.addToCart = function(item) {
             sharedCartService.add(item);
         };
+
+        /*Fonction de recherche dans la page d'acceuil*/
+            $scope.search = function(){
+            console.log("Je suis ici pour la recherche");
+            $state.go('homeParent.research', {}, {location: "replace"});
+        }
+
     })
     .controller('searchCtrl', function($scope, $rootScope, $ionicSideMenuDelegate, fireBaseData, $state,
         $ionicHistory, $firebaseArray, sharedCartService, sharedUtils, Library) {
@@ -100,7 +106,7 @@ angular.module('app.controllers', [])
 
         //loads the menu----onload event
         $scope.$on('$stateChangeSuccess', function() {
-            $scope.loadMore(); //Added Infine Scroll
+          //  $scope.loadMore(); //Added Infine Scroll
         });
 
         // Loadmore() called inorder to load the list 
@@ -150,6 +156,7 @@ angular.module('app.controllers', [])
         $scope.addToCart = function(item) {
             sharedCartService.add(item);
         };
+
 
     })
     .controller('libraryCtrl', function($scope, $rootScope, $ionicSideMenuDelegate, fireBaseData, $state,
@@ -219,7 +226,7 @@ angular.module('app.controllers', [])
 
         //loads the menu----onload event
         $scope.$on('$stateChangeSuccess', function() {
-            $scope.loadMore(); //Added Infine Scroll
+         //   $scope.loadMore(); //Added Infine Scroll
         });
 
         // Loadmore() called inorder to load the list 
@@ -512,7 +519,7 @@ angular.module('app.controllers', [])
                 });
                 $rootScope.extras = false;
                 sharedUtils.hideLoading();
-                $state.go('tabsController.login', {}, {
+                $state.go('homeParent.home', {}, {
                     location: "replace"
                 });
 

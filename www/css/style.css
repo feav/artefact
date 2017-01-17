@@ -300,6 +300,14 @@ margin-top:10px;
 
 /*-------------------------------------------------------feav----------------------*/
 
+.homePage {
+  background: url(../img/home.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .barmenu{
   display: inline-flex;
   width: 100%;
@@ -696,4 +704,12 @@ input{
 }
 .up_arrow{
       transform: rotateX(150deg);
+}
+
+.bar-stable{
+  background-color: black !important;
+}
+
+.bar.bar-stable .title{
+  color: #ffd400;
 }

@@ -1,0 +1,114 @@
+<!--#5. indexCtrl -->
+    <ion-side-menus data-componentid="side-menu21" style="" enable-menu-with-back-views="false" id="side-menu">
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-assertive" >
+
+                <ion-nav-back-button></ion-nav-back-button>
+
+
+                <ion-nav-buttons side="left">
+                    <!-- #3.  $root.extras -->
+                    <button  class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                    </button>
+                </ion-nav-buttons>
+
+                <ion-nav-buttons side="right">
+                  <!-- #3.  $root.extras -->
+                  <!-- #4.  get_total() -->
+                  <button ui-sref="myCart" ng-if="$root.extras" class="button button-icon button-clear ion-ios-cart-outline">
+                    {{get_total()}}
+                  </button>
+                </ion-nav-buttons>
+
+            </ion-nav-bar>
+            <ion-nav-view name="menuContent"></ion-nav-view>
+        </ion-side-menu-content>
+
+        <!-- #3.  $root.extras -->
+        <ion-side-menu side="left" id="side-menu21" >
+
+            <ion-header-bar class="expanded">
+            <div  ng-if="$root.extras" >
+            <!-- <img ng-if="$root.extras" ng-src="{{&apos;img/fk/&apos;+ user_info.photoURL +&apos;.jpg&apos;}}" class="avatar motion spin fade"> -->
+            </div>
+              
+              <div class="menu-bottom" ng-if="$root.extras">
+                <!-- {{user_info.displayName}} -->
+              </div>
+              <div class="menu-bottom" ng-if="$root.extras ==  false">
+                ARTEFACT
+              </div>
+            </ion-header-bar>
+
+            <ion-content class="stable-bg has-expanded-header" style="background: black;">
+                <ion-list data-componentid="list1" class=" " id="menu-list1">
+                    <hr>
+                    <ion-item  ng-if="$root.extras == false" data-componentid="list-item1" style="" menu-close="" ui-sref="signup" id="menu-list-item1" class="item-icon-left  ">
+                        <i class="icon my-icon"><img src="img/sub.png" style="width: 20px;margin-left: 10px;"></i>Subscriber</ion-item>
+                    
+                    <div class="item item-input bord-black" ng-controller="homeCtrl">
+                        <input ng-model="texte" type="texte" placeholder="" style="border:none;">
+                        <button class="input-img" ng-click="search();"><img src="img/search.png"></button>
+                    </div>
+                    <ion-item data-componentid="list-item1" style="" menu-close="" ui-sref="home" id="menu-list-item1" class="item-icon-left  ">
+                        <i class="icon ion-ios-home-outline"></i>Home</ion-item>
+                        <hr>
+                    <ion-item  ng-if="$root.extras == false" data-componentid="list-item1" style="" menu-close="" ui-sref="library" id="menu-list-item1" class="item-icon-left  ">
+                        <i class="icon my-icon"><img src="img/lib.png" style="width: 20px;margin-left: 10px;"></i>Serie</ion-item>
+                        <hr>
+                    <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#kind');">
+                      <i class="icon my-icon" style="left: 0;"><img src="img/kind.png" style="width: 20px;"></i>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Kind
+                          </div>        
+                      </span>
+                          <div class="listSub hide" id="kind">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
+                    </ion-item>
+                        <hr>
+                    <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#author');">
+                      <i class="icon my-icon" style="left: 0;"><img src="img/pencil.png" style="width: 20px;"></i>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Author
+                          </div>        
+                      </span>
+                          <div class="listSub hide" id="author">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
+                    </ion-item>
+                        <hr>
+                    <ion-item data-componentid="list-item3" style="" id="menu-list-item3" class="item-icon-left  input-select-menu">
+                      <span class="custom-dropdown custom-dropdown--white" onclick="menuTarg('#style');">
+                      <i class="icon my-icon" style="left: 0;"><img src="img/style.png" style="width: 20px;"></i>
+                          <div class="custom-dropdown__select custom-dropdown__select--white">Style
+                          </div>        
+                      </span>
+                          <div class="listSub hide" id="style">
+                            <div><a href="" class="text-art">Comics</a></div>
+                            <div><a href="" class="text-art">Franco-belgian</a></div>
+                            <div><a href="" class="text-art">Manga</a></div>         
+                            <div><a href="" class="text-art">Realistic</a></div>    
+                            <div><a href="" class="text-art">Semi-realistic</a></div>  
+                          </div>  
+                    </ion-item>
+                        <hr ng-if="$root.extras">
+                    <ion-item ng-click="logout()" ng-if="$root.extras == f" data-componentid="list-item7" style="" id="menu-list-item7" class="item-icon-left  ">
+                        <i class="icon ion-log-out"></i>Logout</ion-item>
+                        <hr>
+                    <ion-item ng-click="logout()" ng-if="$root.extras == false" ui-sref="author" data-componentid="list-item7" style=" color: #ffd400;" id="menu-list-item7" class=" " >
+                        Author side</ion-item>
+
+                </ion-list>
+            </ion-content>
+
+        </ion-side-menu>
+    </ion-side-menus>

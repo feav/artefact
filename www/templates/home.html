@@ -1,15 +1,30 @@
-<ion-view style="" class=" " id="page1" title="Home" ng-controller="homeCtrl">
-    <ion-content class="has-header" padding="false" style="background: url(img/home.png) center; background-size: cover;">
+<ion-view hide-nav-bar="true" id="page1" title="Home" class="homePage">
+    <ion-content class="has-header" padding="false">
     <div class="content-home marg-top-fifty">
-    	<div class="item item-input bord-black" >
+    	<div class="item item-input bord-black">
             <input ng-model="texte" type="texte" placeholder="" style="border:none;">
             <button class="input-img" ng-click="search();"><img src="img/search.png"></button>
         </div>
         <div class="home-button">
-            <div class="button-black"><img src="img/sub.png"> <a href="#page6">Subscribe</a></div>
-            <div class="button-black"><img src="img/tchat.png"> <a href="#library">Library</a></div>
+            <div class="button-black"><img src="img/sub.png"> <a ui-sref="homeParent.signup">Subscribe</a></div>
+            <div class="button-black"><img src="img/tchat.png"> <a ui-sref="projet.library">Library</a></div>
             <p>Artwork By Felix FOKOUA</p>
         </div>
     </div>    
     </ion-content>
 </ion-view>
+
+<!-- <ion-view hide-nav-bar="true" id="page1" title="Home">
+    <ion-content class="has-header" padding="false" style="background: url(img/home.png) center; background-size: cover;">
+    <div class="content-home">
+        <div class="item item-input bord-black">
+            <input ng-model="user.phone" type="tel" placeholder="">
+            <button class="input-img" ng-click="research()"><img src="img/search.png"></button>
+        </div>
+        <div class="button-black"><img src="img/sub.png"> <a ui-sref="homeParent.signup">Subscribe</a></div>
+        <div class="button-black"><img src="img/tchat.png"> <a ui-sref="projet.library">Library</a></div>
+        <p>Artwork By Felix FOKOUA</p>
+    </div>    
+    </ion-content>
+</ion-view> -->
+
